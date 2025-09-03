@@ -5,74 +5,276 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Koenigsmilch AI Coaching - Bestellung</title>
   <style>
-    /* Stildefinitionen hier */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: #121212;
+      color: #e0e0e0;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      color: #1e88e5;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    form {
+      background: #212121;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 15px #1e88e5aa;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1.2rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      background: #333;
+      color: #e0e0e0;
+      outline-offset: 2px;
+      outline-color: #1e88e5;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    select[multiple] {
+      height: 120px;
+    }
+    .checkbox-group,
+    .radio-group {
+      margin-bottom: 1.2rem;
+    }
+    .checkbox-group label,
+    .radio-group label {
+      display: inline-block;
+      margin-right: 1.5rem;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: 0.4rem;
+      cursor: pointer;
+      accent-color: #1e88e5;
+    }
+    .btc-address {
+      background: #263238;
+      padding: 1rem;
+      font-family: monospace;
+      word-break: break-all;
+      border-radius: 5px;
+      user-select: all;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .price-info {
+      font-weight: 700;
+      color: #4caf50;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #121212;
+      transition: background-color 0.3s ease;
+      margin-top: 0.8rem;
+    }
+    button:disabled {
+      background-color: #555;
+      cursor: not-allowed;
+    }
+    button:hover:not(:disabled) {
+      background-color: #388e3c;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #999;
+      margin-top: -1rem;
+      margin-bottom: 1.5rem;
+    }
+    footer {
+      margin-top: 3rem;
+      color: #999;
+      font-size: 0.9rem;
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+    }
+    .confirmation-message {
+      background: #1e88e5;
+      padding: 1.5rem;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 2rem;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-<main>
-  <h1>Koenigsmilch AI Coaching Bestellung</h1>
+<h1>Koenigsmilch AI Coaching - Bestellung</h1>
 
-  <form id="orderForm" action="https://formspree.io/f/xdklpapl" method="POST" novalidate>
-    <label for="email">Deine E-Mail *</label>
-    <input type="email" id="email" name="email" required placeholder="deine@mail.de" autocomplete="email" />
+<form id="orderForm" action="https://formspree.io/f/xdklpapl" method="POST" enctype="multipart/form-data" novalidate>
 
-    <label for="package">Wähle dein Paket *</label>
-    <select id="package" name="package" required>
-      <option value="" disabled selected>-- Paket wählen --</option>
-      <option value="3 Tage Testphase — 0.0005 BTC (~2.25 USD)">3 Tage Testphase — 0.0005 BTC (~2.25 USD)</option>
-      <option value="1 Woche — 0.001 BTC (~4.50 USD)">1 Woche — 0.001 BTC (~4.50 USD)</option>
-      <option value="30 Tage — 0.002 BTC (~9 USD)">30 Tage — 0.002 BTC (~9 USD)</option>
-      <option value="Jedes Quartal — 0.005 BTC (~22.50 USD)">Jedes Quartal — 0.005 BTC (~22.50 USD)</option>
-      <option value="6 Monate — 0.009 BTC (~40.50 USD)">6 Monate — 0.009 BTC (~40.50 USD)</option>
-      <option value="1 Jahr — 0.015 BTC (~67.50 USD)">1 Jahr — 0.015 BTC (~67.50 USD)</option>
-      <option value="Unlimited — 0.03 BTC (~135 USD)">Unlimited — 0.03 BTC (~135 USD)</option>
-    </select>
+  <label for="email">Deine E-Mail Adresse *</label>
+  <input type="email" id="email" name="email" placeholder="deine@mail.de" required autocomplete="email" />
 
-    <label for="txid">Bitcoin Zahlungsbeleg (TXID) *</label>
-    <input type="text" id="txid" name="txid" required placeholder="z.B. abc123def456..." autocomplete="off" />
+  <label for="package">Wähle dein Paket *</label>
+  <select id="package" name="package" required>
+    <option value="" disabled selected>-- Paket wählen --</option>
+    <option value="3 Tage Testphase — 0.0005 BTC (~2.25 USD)">3 Tage Testphase — 0.0005 BTC (~2.25 USD)</option>
+    <option value="1 Woche — 0.001 BTC (~4.50 USD)">1 Woche — 0.001 BTC (~4.50 USD)</option>
+    <option value="30 Tage — 0.002 BTC (~9 USD)">30 Tage — 0.002 BTC (~9 USD)</option>
+    <option value="Jedes Quartal — 0.005 BTC (~22.50 USD)">Jedes Quartal — 0.005 BTC (~22.50 USD)</option>
+    <option value="6 Monate — 0.009 BTC (~40.50 USD)">6 Monate — 0.009 BTC (~40.50 USD)</option>
+    <option value="1 Jahr — 0.015 BTC (~67.50 USD)">1 Jahr — 0.015 BTC (~67.50 USD)</option>
+    <option value="Unlimited — 0.03 BTC (~135 USD)">Unlimited — 0.03 BTC (~135 USD)</option>
+  </select>
 
-    <div class="btc-address">
-      <strong>Bitcoin Adresse (BTC):</strong><br />
-      bc1qyourbitcoinaddresshere1234567890abcdef
-    </div>
+  <p class="price-info">Bitcoin Adresse (BTC):<br><strong>bc1qyourbitcoinaddresshere1234567890abcdef</strong></p>
 
-    <input type="hidden" id="customerNumber" name="customerNumber" value="" />
-
-    <div class="checkbox-container">
-      <input type="checkbox" id="acceptTerms" required />
-      <label for="acceptTerms">Ich akzeptiere die <a href="#" target="_blank" rel="noopener noreferrer">AGB</a> und die <a href="#" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> *</label>
-    </div>
-
-    <button type="submit" id="submitBtn" disabled>Bestellung abschicken</button>
-  </form>
-
-  <div class="confirmation" id="confirmationMessage" role="alert">
-    Danke für deine Bestellung! Wir melden uns bald bei dir per E-Mail.
+  <label>Kommunikationsweg *</label>
+  <div class="radio-group" role="radiogroup" aria-labelledby="commLabel">
+    <label><input type="radio" name="communication" value="Discord" required /> Discord</label>
+    <label><input type="radio" name="communication" value="Telegram" /> Telegram</label>
+    <label><input type="radio" name="communication" value="Signal" /> Signal</label>
+    <label><input type="radio" name="communication" value="Andere" /> Andere</label>
   </div>
-</main>
+
+  <label for="commHandle">Dein Nutzername / Kontakt (z.B. Discord#1234) *</label>
+  <input type="text" id="commHandle" name="commHandle" placeholder="z.B. Koenigsmilch#1234" required autocomplete="off" />
+
+  <label>Social Media Konten (Mehrfachauswahl möglich)</label>
+  <div class="checkbox-group" role="group" aria-labelledby="socialLabel">
+    <label><input type="checkbox" name="social[]" value="Twitter" /> Twitter</label>
+    <label><input type="checkbox" name="social[]" value="Instagram" /> Instagram</label>
+    <label><input type="checkbox" name="social[]" value="TikTok" /> TikTok</label>
+    <label><input type="checkbox" name="social[]" value="LinkedIn" /> LinkedIn</label>
+    <label><input type="checkbox" name="social[]" value="YouTube" /> YouTube</label>
+    <label><input type="checkbox" name="social[]" value="Keins" /> Keins</label>
+  </div>
+
+  <label for="paymentType">Zahlungsnachweis *</label>
+  <select id="paymentType" name="paymentType" required>
+    <option value="" disabled selected>-- Wähle eine Option --</option>
+    <option value="txid">Transaktions-ID (TXID) angeben</option>
+    <option value="screenshot">Screenshot hochladen</option>
+  </select>
+
+  <div id="txidContainer" style="display:none;">
+    <label for="txid">Transaktions-ID (TXID) *</label>
+    <input type="text" id="txid" name="txid" placeholder="z.B. abc123def456..." autocomplete="off" />
+  </div>
+
+  <div id="screenshotContainer" style="display:none;">
+    <label for="screenshot">Screenshot des Zahlungsbelegs (jpg, png, max. 5MB) *</label>
+    <input type="file" id="screenshot" name="screenshot" accept="image/png, image/jpeg" />
+  </div>
+
+  <input type="hidden" id="customerNumber" name="customerNumber" value="" />
+
+  <div style="margin-bottom:1.5rem;">
+    <input type="checkbox" id="acceptTerms" required />
+    <label for="acceptTerms" style="font-weight: 600;">
+      Ich akzeptiere die <a href="#" target="_blank" rel="noopener noreferrer" style="color:#1e88e5;">AGB</a> und die <a href="#" target="_blank" rel="noopener noreferrer" style="color:#1e88e5;">Datenschutzerklärung</a> *
+    </label>
+  </div>
+
+  <button type="submit" id="submitBtn" disabled>Bestellung abschicken</button>
+
+</form>
+
+<div class="confirmation-message" id="confirmationMessage" role="alert" aria-live="polite">
+  Vielen Dank für deine Bestellung! Wir melden uns bald per E-Mail bei dir.
+</div>
 
 <footer>
   © 2025 Koenigsmilch AI Coaching – Alle Rechte vorbehalten
 </footer>
 
 <script>
-  // Kundennummer generieren und in hidden input schreiben
+  // Kundennummer generieren
   const custNum = 'KUNDEN-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
   document.getElementById('customerNumber').value = custNum;
 
-  const form = document.getElementById('orderForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const acceptTermsCheckbox = document.getElementById('acceptTerms');
-  const confirmationMessage = document.getElementById('confirmationMessage');
+  // Kommunikation: Zahlungsnachweis Auswahl und dynamische Felder
+  const paymentTypeSelect = document.getElementById('paymentType');
+  const txidContainer = document.getElementById('txidContainer');
+  const screenshotContainer = document.getElementById('screenshotContainer');
+  const txidInput = document.getElementById('txid');
+  const screenshotInput = document.getElementById('screenshot');
 
-  // Nur aktivieren, wenn AGB akzeptiert ist
+  paymentTypeSelect.addEventListener('change', () => {
+    const val = paymentTypeSelect.value;
+    if (val === 'txid') {
+      txidContainer.style.display = 'block';
+      txidInput.required = true;
+      screenshotContainer.style.display = 'none';
+      screenshotInput.required = false;
+      screenshotInput.value = '';
+    } else if (val === 'screenshot') {
+      screenshotContainer.style.display = 'block';
+      screenshotInput.required = true;
+      txidContainer.style.display = 'none';
+      txidInput.required = false;
+      txidInput.value = '';
+    } else {
+      txidContainer.style.display = 'none';
+      screenshotContainer.style.display = 'none';
+      txidInput.required = false;
+      screenshotInput.required = false;
+      txidInput.value = '';
+      screenshotInput.value = '';
+    }
+  });
+
+  // Aktivierung des Submit Buttons nur wenn AGB akzeptiert wurden
+  const acceptTermsCheckbox = document.getElementById('acceptTerms');
+  const submitBtn = document.getElementById('submitBtn');
+
   acceptTermsCheckbox.addEventListener('change', () => {
     submitBtn.disabled = !acceptTermsCheckbox.checked;
   });
 
-  // Formular-Submit abfangen, um Bestätigung anzuzeigen
-  form.addEventListener('submit', e => {
+  // Formular Submit Handler mit Validierung und Feedback
+  const form = document.getElementById('orderForm');
+  const confirmationMessage = document.getElementById('confirmationMessage');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!form.checkValidity()) {
@@ -80,23 +282,27 @@
       return;
     }
 
-    // Form an Formspree senden via Fetch API
+    // Abschicken via fetch
     const formData = new FormData(form);
 
-    fetch(form.action, {
-      method: form.method,
-      headers: { 'Accept': 'application/json' },
-      body: formData,
-    }).then(response => {
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
       if (response.ok) {
         form.style.display = 'none';
         confirmationMessage.style.display = 'block';
       } else {
-        alert('Leider gab es ein Problem beim Senden. Bitte versuche es später nochmal.');
+        alert('Fehler beim Absenden. Bitte versuche es später erneut.');
       }
-    }).catch(() => {
-      alert('Netzwerkfehler. Bitte überprüfe deine Internetverbindung.');
-    });
+    } catch (error) {
+      alert('Netzwerkfehler. Bitte überprüfe deine Verbindung.');
+    }
   });
 </script>
 
