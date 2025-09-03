@@ -1,170 +1,132 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AnonPrompt Shop – BTC Only</title>
-  <style>
-    body {
-      margin: 0;
-      background: #0d0d0d;
-      color: #f4f4f4;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    header {
-      background: #121212;
-      padding: 40px 20px;
-      text-align: center;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.8em;
-      color: #ffcc00;
-    }
-    header p {
-      font-size: 1.1em;
-      color: #aaa;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 20px;
-      transition: all 0.2s ease-in-out;
-    }
-    .card:hover {
-      border-color: #ffae00;
-      transform: scale(1.02);
-    }
-    .card h2 {
-      margin-top: 0;
-      color: #ffae00;
-    }
-    .price {
-      font-size: 1.2em;
-      color: #00ff99;
-      margin: 10px 0;
-    }
-    .btc-box {
-      background: #111;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 0.9em;
-      margin: 10px 0;
-      word-break: break-word;
-      border-left: 3px solid #ffae00;
-    }
-    .qr {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .qr img {
-      width: 110px;
-      border: 1px solid #333;
-      padding: 5px;
-      background: #fff;
-    }
-    .note {
-      font-size: 0.85em;
-      color: #bbb;
-      margin-top: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #666;
-      font-size: 0.9em;
-      border-top: 1px solid #333;
-      margin-top: 40px;
-    }
-    .contact {
-      max-width: 700px;
-      margin: auto;
-      padding: 30px 20px;
-      background: #181818;
-      border-radius: 8px;
-      margin-top: 40px;
-      border: 1px solid #333;
-    }
-    .contact code {
-      background: #222;
-      padding: 4px 6px;
-      border-radius: 4px;
-      color: #ffcc00;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Koenigsmilch AI Coaching</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  body {
+    margin: 0; padding: 0; background: #121212; color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    display: flex; flex-direction: column; min-height: 100vh;
+  }
+  header {
+    background: #1e88e5;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(30,136,229,0.6);
+  }
+  header h1 {
+    margin: 0; font-weight: 700; font-size: 2.5rem;
+  }
+  main {
+    flex: 1;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  main p.description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: #bbdefb;
+  }
+  section.product {
+    background: #212121;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 15px #1e88e5aa;
+  }
+  section.product h2 {
+    margin-top: 0;
+    font-weight: 700;
+    color: #90caf9;
+  }
+  section.product p {
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .price {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4caf50;
+  }
+  .btc-address {
+    background: #263238;
+    padding: 1rem;
+    font-family: monospace;
+    word-break: break-all;
+    border-radius: 5px;
+    user-select: all;
+    margin-bottom: 1.5rem;
+  }
+  .note {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 2rem;
+  }
+  footer {
+    background: #1e88e5;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  a.contact-link {
+    color: #90caf9;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  a.contact-link:hover {
+    text-decoration: underline;
+  }
+  button.buy-btn {
+    background: #4caf50;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #121212;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  button.buy-btn:hover {
+    background: #388e3c;
+  }
+</style>
 </head>
 <body>
+<header>
+  <h1>Koenigsmilch AI Coaching</h1>
+</header>
+<main>
+  <p class="description">
+    Starte jetzt mit deinem anonymen 30-Tage AI-Motivation-Coaching! Du bekommst täglich exklusive AI-Tipps, Erinnerungen und Motivation per E-Mail oder Nostr – voll anonym, voll digital. Bezahle einfach mit Bitcoin und leg los!
+  </p>
 
-  <header>
-    <h1>🧠 AnonPrompt Shop</h1>
-    <p>Premium KI Prompts – 100% Anonym – Nur Bitcoin</p>
-  </header>
+  <section class="product">
+    <h2>30 Tage AI-Motivation</h2>
+    <p>Erhalte 30 Tage lang täglich eine persönliche AI-Motivation per Mail oder Nostr. Perfekt, um deinen Workflow zu starten, dranzubleiben und mehr aus AI herauszuholen.</p>
+    <p class="price">Preis: 0.002 BTC (~9 USD)</p>
 
-  <section class="products">
-    <!-- Produkt 1 -->
-    <div class="card">
-      <h2>🔥 GPT-4 Prompt Pack (Business)</h2>
-      <p>100+ handverlesene Prompts für Marketing, Verkauf, SEO & Content.</p>
-      <div class="price">25,000 sats</div>
-      <div class="btc-box">
-        Zahlung an BTC-Adresse:<br>
-        <code>bc1qexampleaddress1234567890xyz</code>
-      </div>
-      <div class="qr">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=bitcoin:bc1qexampleaddress1234567890xyz&size=120x120" alt="QR Code">
-      </div>
-      <div class="note">Sende TX-ID + Produktname an: <code>anonprompts@protonmail.com</code></div>
+    <div>
+      <strong>Bitcoin Adresse (BTC):</strong>
+      <div class="btc-address">bc1qyourbitcoinaddresshere1234567890abcdef</div>
     </div>
 
-    <!-- Produkt 2 -->
-    <div class="card">
-      <h2>🎨 Midjourney Art Prompts</h2>
-      <p>50+ kreative AI-Bild-Prompts für herausragende Kunstwerke mit Midjourney.</p>
-      <div class="price">15,000 sats</div>
-      <div class="btc-box">
-        Lightning Invoice:<br>
-        <code>lnbc1exampleinvoice0987654321</code>
-      </div>
-      <div class="note">Sende Screenshot an: <code>anonprompts@protonmail.com</code></div>
-    </div>
+    <p class="note">
+      Sende den Zahlungsbeleg per Mail an <a href="mailto:koenigsmilch@protonmail.com" class="contact-link">koenigsmilch@protonmail.com</a> oder kontaktiere mich über <a href="https://nostr.io/" target="_blank" rel="noopener" class="contact-link">Nostr</a>, um deinen Start zu bestätigen.
+    </p>
 
-    <!-- Produkt 3 -->
-    <div class="card">
-      <h2>💻 Coding Prompts</h2>
-      <p>Effiziente Prompts für GPT-4 zur Hilfe bei Debugging, Code Review & mehr.</p>
-      <div class="price">10,000 sats</div>
-      <div class="btc-box">
-        BTC-Adresse:<br>
-        <code>bc1qexampleaddress0987654321abc</code>
-      </div>
-      <div class="note">Sende TX-ID an: <code>anonprompts@protonmail.com</code></div>
-    </div>
+    <button class="buy-btn" onclick="alert('Sende BTC an die angegebene Adresse und kontaktiere Koenigsmilch zur Aktivierung!')">So kaufst du</button>
   </section>
-
-  <div class="contact">
-    <h3>📬 Kontakt & Lieferung</h3>
-    <p>Nach Zahlung sende bitte:</p>
-    <ul>
-      <li>✅ Transaktions-ID oder Screenshot</li>
-      <li>✅ Produktname</li>
-    </ul>
-    <p>an <code>anonprompts@protonmail.com</code> oder über Nostr: <code>npub1examplenostrkeyxxxxxxxx</code></p>
-    <p>Die Lieferung erfolgt per Mail oder Nostr-Message innerhalb von 24 Stunden.</p>
-  </div>
-
-  <footer>
-    <p>© 2025 AnonPrompt Shop – Kein KYC. Keine Rückerstattung. Kein Support. Bildung & Info only.</p>
-  </footer>
-
+</main>
+<footer>
+  © 2025 Koenigsmilch AI Coaching – Alle Rechte vorbehalten
+</footer>
 </body>
 </html>
