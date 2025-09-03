@@ -1,99 +1,69 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>AnonShop – BTC Only</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            background-color: #121212;
-            color: #f2f2f2;
-            font-family: monospace;
-            margin: 0;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 0;
-        }
-        .product {
-            border: 1px solid #444;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        .product h2 {
-            margin-top: 0;
-        }
-        .product p {
-            margin: 5px 0;
-        }
-        .buy-btn {
-            background-color: #ff9900;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .buy-btn:hover {
-            background-color: #ffaa22;
-        }
-        footer {
-            margin-top: 60px;
-            font-size: 0.9em;
-            text-align: center;
-            color: #888;
-        }
-        .btc-info {
-            background: #1e1e1e;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            margin-top: 10px;
-            word-break: break-all;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnonPrompts – KI Prompt Shop</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <header>
-        <h1>🛒 AnonShop</h1>
-        <p>BTC only – No KYC – 100% anonymous</p>
-    </header>
+  <header>
+    <h1>🧠 AnonPrompts</h1>
+    <p>Premium KI Prompts · 100% anonym · Bezahlung mit Bitcoin</p>
+  </header>
 
-    <section class="product">
-        <h2>💾 Produkt: Digitale Datei</h2>
-        <p>Beschreibung: Hochwertiges eBook als PDF (z.B. Privatsphäre-Guide)</p>
-        <p>Preis: <strong>20,000 sats</strong> (~0.0002 BTC)</p>
-        
-        <div class="btc-info">
-            📥 Zahlung an BTC-Adresse:<br>
-            <code>bc1qexamplebtcaddressxxxxxxxxxxxxxxxxxx</code>
+  <main>
+    <section class="products">
+      <!-- Produkt 1 -->
+      <div class="product-card">
+        <h2>🔥 GPT-4 Prompt Pack (Business)</h2>
+        <p>100+ Premium Prompts für Marketing, SEO, Copywriting u.v.m.</p>
+        <div class="price">Preis: 25,000 sats</div>
+        <div class="btc-box">
+          BTC-Adresse:<br>
+          <code>bc1qexamplelongaddressxxxxxxxxxx</code>
         </div>
-        <p>⚠️ Nach Zahlung: Schicke TX-ID + Produktname an<br>
-        <code>anonshop@protonmail.com</code> oder Nostr: <code>npub1examplexyz...</code></p>
+        <p class="note">Sende TX-ID + Produktname an: <code>anonprompts@protonmail.com</code></p>
+      </div>
+
+      <!-- Produkt 2 -->
+      <div class="product-card">
+        <h2>🎨 Midjourney Image Prompt Set</h2>
+        <p>50+ einzigartige Bild-Prompts für kreative AI-Bilder mit Stil.</p>
+        <div class="price">Preis: 15,000 sats</div>
+        <div class="btc-box">
+          Lightning Invoice:<br>
+          <code>lnbc1examplelightninginvoicexxxxxxxx</code>
+        </div>
+        <p class="note">Sende Screenshot an: <code>anonprompts@protonmail.com</code></p>
+      </div>
+
+      <!-- Produkt 3 -->
+      <div class="product-card">
+        <h2>💻 Dev & Debug Prompts</h2>
+        <p>Optimierte GPT-4 Prompts für Developer, Fehleranalyse & Refactoring.</p>
+        <div class="price">Preis: 10,000 sats</div>
+        <div class="btc-box">
+          BTC-Adresse:<br>
+          <code>bc1qexamplelongaddressxxxxxxxxxx</code>
+        </div>
+        <p class="note">Sende TX-ID an: <code>anonprompts@protonmail.com</code></p>
+      </div>
     </section>
 
-    <section class="product">
-        <h2>🔑 Produkt: Private Zugangsdaten</h2>
-        <p>Beschreibung: Zugang zu privatem Forum (12 Monate)</p>
-        <p>Preis: <strong>50,000 sats</strong></p>
-
-        <div class="btc-info">
-            Zahlung an BTC Lightning Invoice:<br>
-            <code>lnbc1examplelightninginvoicehere...</code>
-        </div>
-        <p>⚠️ Sende Screenshot oder Invoice-ID an E-Mail/Nostr</p>
+    <section class="contact">
+      <h3>📬 Kontakt & Lieferung</h3>
+      <p>Nach der Zahlung sende bitte TX-ID oder Screenshot + Produktname per:</p>
+      <ul>
+        <li>E-Mail: <code>anonprompts@protonmail.com</code></li>
+        <li>Nostr: <code>npub1xxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></li>
+      </ul>
+      <p>Lieferung erfolgt per E-Mail oder Nostr-Message innerhalb von 12h.</p>
     </section>
+  </main>
 
-    <footer>
-        <p>© 2025 AnonShop – Kein Support, keine Rückerstattung.</p>
-        <p>Nur für Bildungszwecke. Du bist für deine eigene Sicherheit verantwortlich.</p>
-    </footer>
+  <footer>
+    <p>© 2025 AnonPrompts – Kein KYC. Kein Support. Keine Rückerstattung.</p>
+  </footer>
 </body>
 </html>
