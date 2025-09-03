@@ -18,40 +18,75 @@
     box-shadow: 0 4px 10px rgba(30,136,229,0.6);
   }
   header h1 {
-    margin: 0; font-weight: 700; font-size: 2.5rem;
+    margin: 0; font-weight: 700; font-size: 2.8rem;
   }
   main {
     flex: 1;
-    max-width: 600px;
+    max-width: 700px;
     margin: 2rem auto;
     padding: 0 1rem;
   }
-  main p.description {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin-bottom: 2rem;
+  p.description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
     color: #bbdefb;
+    text-align: center;
   }
   section.product {
     background: #212121;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 0 15px #1e88e5aa;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 25px #1e88e5cc;
   }
   section.product h2 {
     margin-top: 0;
     font-weight: 700;
     color: #90caf9;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
-  section.product p {
-    line-height: 1.4;
-    margin-bottom: 1rem;
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
   }
-  .price {
+  .option {
+    background: #263238;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+    width: 180px;
+    text-align: center;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    user-select: none;
+  }
+  .option:hover {
+    background: #1e88e5;
+    border-color: #90caf9;
+    color: #fff;
+  }
+  .option.selected {
+    background: #4caf50;
+    border-color: #388e3c;
+    color: #121212;
     font-weight: 700;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #4caf50;
+  }
+  .option h3 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.2rem;
+  }
+  .option p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #cfd8dc;
+  }
+  .btc-container {
+    margin-bottom: 2rem;
   }
   .btc-address {
     background: #263238;
@@ -60,19 +95,15 @@
     word-break: break-all;
     border-radius: 5px;
     user-select: all;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    text-align: center;
   }
   .note {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #999;
     margin-bottom: 2rem;
-  }
-  footer {
-    background: #1e88e5;
-    color: #e0e0e0;
     text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
   }
   a.contact-link {
     color: #90caf9;
@@ -85,17 +116,32 @@
   button.buy-btn {
     background: #4caf50;
     border: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #121212;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 0 auto;
     transition: background-color 0.3s ease;
   }
   button.buy-btn:hover {
     background: #388e3c;
+  }
+  footer {
+    background: #1e88e5;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  @media (max-width: 480px) {
+    .option {
+      width: 100%;
+    }
   }
 </style>
 </head>
@@ -105,24 +151,52 @@
 </header>
 <main>
   <p class="description">
-    Starte jetzt mit deinem anonymen 30-Tage AI-Motivation-Coaching! Du bekommst täglich exklusive AI-Tipps, Erinnerungen und Motivation per E-Mail oder Nostr – voll anonym, voll digital. Bezahle einfach mit Bitcoin und leg los!
+    Starte jetzt dein anonymes AI-Motivation-Coaching! Wähle eine Laufzeit, bezahle mit Bitcoin und erhalte täglich exklusive AI-Tipps, Erinnerungen und Motivation per E-Mail oder Nostr – voll anonym, voll digital.
   </p>
 
-  <section class="product">
-    <h2>30 Tage AI-Motivation</h2>
-    <p>Erhalte 30 Tage lang täglich eine persönliche AI-Motivation per Mail oder Nostr. Perfekt, um deinen Workflow zu starten, dranzubleiben und mehr aus AI herauszuholen.</p>
-    <p class="price">Preis: 0.002 BTC (~9 USD)</p>
+  <section class="product" aria-label="Coaching Laufzeiten">
+    <h2>Wähle deine Laufzeit</h2>
+    <div class="options" role="listbox" tabindex="0" aria-label="Laufzeit Optionen">
+      <div class="option selected" role="option" aria-selected="true" tabindex="0" data-price="0.0005 BTC" data-days="3">
+        <h3>3 Tage Testphase</h3>
+        <p>0.0005 BTC (~2.25 USD)</p>
+      </div>
+      <div class="option" role="option" aria-selected="false" tabindex="-1" data-price="0.001 BTC" data-days="7">
+        <h3>1 Woche</h3>
+        <p>0.001 BTC (~4.50 USD)</p>
+      </div>
+      <div class="option" role="option" aria-selected="false" tabindex="-1" data-price="0.002 BTC" data-days="30">
+        <h3>30 Tage</h3>
+        <p>0.002 BTC (~9 USD)</p>
+      </div>
+      <div class="option" role="option" aria-selected="false" tabindex="-1" data-price="0.005 BTC" data-days="90">
+        <h3>Jedes Quartal (3 Monate)</h3>
+        <p>0.005 BTC (~22.50 USD)</p>
+      </div>
+      <div class="option" role="option" aria-selected="false" tabindex="-1" data-price="0.009 BTC" data-days="180">
+        <h3>6 Monate</h3>
+        <p>0.009 BTC (~40.50 USD)</p>
+      </div>
+      <div class="option" role="option" aria-selected="false" tabindex="-1" data-price="0.015 BTC" data-days="365">
+        <h3>1 Jahr</h3>
+        <p>0.015 BTC (~67.50 USD)</p>
+      </div>
+      <div class="option" role="option" aria-selected="false" tabindex="-1" data-price="0.03 BTC" data-days="unbegrenzt">
+        <h3>Unlimited</h3>
+        <p>0.03 BTC (~135 USD)</p>
+      </div>
+    </div>
 
-    <div>
+    <div class="btc-container">
       <strong>Bitcoin Adresse (BTC):</strong>
-      <div class="btc-address">bc1qyourbitcoinaddresshere1234567890abcdef</div>
+      <div class="btc-address" id="btcAddress">bc1qyourbitcoinaddresshere1234567890abcdef</div>
     </div>
 
     <p class="note">
       Sende den Zahlungsbeleg per Mail an <a href="mailto:koenigsmilch@protonmail.com" class="contact-link">koenigsmilch@protonmail.com</a> oder kontaktiere mich über <a href="https://nostr.io/" target="_blank" rel="noopener" class="contact-link">Nostr</a>, um deinen Start zu bestätigen.
     </p>
 
-    <button class="buy-btn" onclick="alert('Sende BTC an die angegebene Adresse und kontaktiere Koenigsmilch zur Aktivierung!')">So kaufst du</button>
+    <button class="buy-btn" onclick="alert('Sende BTC an die angegebene Adresse und kontaktiere Koenigsmilch zur Aktivierung!')">Jetzt kaufen</button>
   </section>
 </main>
 <footer>
