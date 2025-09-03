@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Koenigsmilch AI Coaching Bestellung</title>
-<style>
-  body {
-    background: #121212;
-    color: #e0e0e0;
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-  }
-  form {
-    background: #212121;
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 0 20px #1e88e5cc;
-  }
-  label {
-    display: block;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
-  }
-  input, select, button {
-    width: 100%;
-    padding: 0.6rem;
-    margin-bottom: 1.2rem;
-    border-radius: 6px;
-    border: none;
-    font-size: 1rem;
-  }
-  input, select {
-    background: #263238;
-    color: #e0e0e0;
-  }
-  input::placeholder {
-    color: #999;
-  }
-  button {
-    background: #4caf50;
-    color: #121212;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background: #388e3c;
-  }
-  .info {
-    font-size: 0.85rem;
-    color: #bbb;
-    margin-bottom: 1rem;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koenigsmilch AI Coaching - Bestellung</title>
+  <style>
+    /* Stildefinitionen hier */
+  </style>
 </head>
 <body>
 
-<form id="orderForm" action="https://formspree.io/f/xdklpapl" method="POST">
-  <h2>Koenigsmilch AI Coaching Bestellung</h2>
+<main>
+  <h1>Koenigsmilch AI Coaching Bestellung</h1>
 
-  <label for="email">Deine E-Mail *</label>
-  <input type="email" id="email" name="email" required placeholder="deine@mail.de" />
+  <form id="orderForm" action="https://formspree.io/f/xdklpapl" method="POST" novalidate>
+    <label for="email">Deine E-Mail *</label>
+    <input type="email" id="email" name="email" required placeholder="deine@mail.de" autocomplete="email" />
 
-  <label for="package">Wähle dein Paket *</label>
-  <select id="package" name="package" required>
-    <option value="">-- Paket wählen --</option>
-    <option value="3 Tage Testphase - 0.0005 BTC">3 Tage Testphase - 0.0005 BTC (~2.25 USD)</option>
-    <option value="1 Woche - 0.001 BTC">1 Woche - 0.001 BTC (~4.50 USD)</option>
-    <option value="30 Tage - 0.002 BTC">30 Tage - 0.002 BTC (~9 USD)</option>
-    <option value="Jedes Quartal - 0.005 BTC">Jedes Quartal - 0.005 BTC (~22.50 USD)</option>
-    <option value="6 Monate - 0.009 BTC">6 Monate - 0.009 BTC (~40.50 USD)</option>
-    <option value="1 Jahr - 0.015 BTC">1 Jahr - 0.015 BTC (~67.50 USD)</option>
-    <option value="Unlimited - 0.03 BTC">Unlimited - 0.03 BTC (~135 USD)</option>
-  </select>
+    <label for="package">Wähle dein Paket *</label>
+    <select id="package" name="package" required>
+      <option value="" disabled selected>-- Paket wählen --</option>
+      <option value="3 Tage Testphase — 0.0005 BTC (~2.25 USD)">3 Tage Testphase — 0.0005 BTC (~2.25 USD)</option>
+      <option value="1 Woche — 0.001 BTC (~4.50 USD)">1 Woche — 0.001 BTC (~4.50 USD)</option>
+      <option value="30 Tage — 0.002 BTC (~9 USD)">30 Tage — 0.002 BTC (~9 USD)</option>
+      <option value="Jedes Quartal — 0.005 BTC (~22.50 USD)">Jedes Quartal — 0.005 BTC (~22.50 USD)</option>
+      <option value="6 Monate — 0.009 BTC (~40.50 USD)">6 Monate — 0.009 BTC (~40.50 USD)</option>
+      <option value="1 Jahr — 0.015 BTC (~67.50 USD)">1 Jahr — 0.015 BTC (~67.50 USD)</option>
+      <option value="Unlimited — 0.03 BTC (~135 USD)">Unlimited — 0.03 BTC (~135 USD)</option>
+    </select>
 
-  <label for="txid">Bitcoin Zahlungsbeleg (TXID) *</label>
-  <input type="text" id="txid" name="txid" required placeholder="z.B. abc123def456..." />
+    <label for="txid">Bitcoin Zahlungsbeleg (TXID) *</label>
+    <input type="text" id="txid" name="txid" required placeholder="z.B. abc123def456..." autocomplete="off" />
 
-  <input type="hidden" id="customerNumber" name="customerNumber" value="" />
+    <div class="btc-address">
+      <strong>Bitcoin Adresse (BTC):</strong><br />
+      bc1qyourbitcoinaddresshere1234567890abcdef
+    </div>
 
-  <div class="info">
-    Eine zufällige Kundennummer wird generiert und mit der Bestellung gesendet.
+    <input type="hidden" id="customerNumber" name="customerNumber" value="" />
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="acceptTerms" required />
+      <label for="acceptTerms">Ich akzeptiere die <a href="#" target="_blank" rel="noopener noreferrer">AGB</a> und die <a href="#" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> *</label>
+    </div>
+
+    <button type="submit" id="submitBtn" disabled>Bestellung abschicken</button>
+  </form>
+
+  <div class="confirmation" id="confirmationMessage" role="alert">
+    Danke für deine Bestellung! Wir melden uns bald bei dir per E-Mail.
   </div>
+</main>
 
-  <button type="submit">Bestellung abschicken</button>
-</form>
+<footer>
+  © 2025 Koenigsmilch AI Coaching – Alle Rechte vorbehalten
+</footer>
 
 <script>
-  // Generiere zufällige Kundennummer beim Laden
+  // Kundennummer generieren und in hidden input schreiben
   const custNum = 'KUNDEN-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
   document.getElementById('customerNumber').value = custNum;
+
+  const form = document.getElementById('orderForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const acceptTermsCheckbox = document.getElementById('acceptTerms');
+  const confirmationMessage = document.getElementById('confirmationMessage');
+
+  // Nur aktivieren, wenn AGB akzeptiert ist
+  acceptTermsCheckbox.addEventListener('change', () => {
+    submitBtn.disabled = !acceptTermsCheckbox.checked;
+  });
+
+  // Formular-Submit abfangen, um Bestätigung anzuzeigen
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Form an Formspree senden via Fetch API
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      headers: { 'Accept': 'application/json' },
+      body: formData,
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = 'none';
+        confirmationMessage.style.display = 'block';
+      } else {
+        alert('Leider gab es ein Problem beim Senden. Bitte versuche es später nochmal.');
+      }
+    }).catch(() => {
+      alert('Netzwerkfehler. Bitte überprüfe deine Internetverbindung.');
+    });
+  });
 </script>
 
 </body>
