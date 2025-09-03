@@ -1,69 +1,170 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AnonPrompts – KI Prompt Shop</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AnonPrompt Shop – BTC Only</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      color: #f4f4f4;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    header {
+      background: #121212;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      color: #ffcc00;
+    }
+    header p {
+      font-size: 1.1em;
+      color: #aaa;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.2s ease-in-out;
+    }
+    .card:hover {
+      border-color: #ffae00;
+      transform: scale(1.02);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #ffae00;
+    }
+    .price {
+      font-size: 1.2em;
+      color: #00ff99;
+      margin: 10px 0;
+    }
+    .btc-box {
+      background: #111;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 0.9em;
+      margin: 10px 0;
+      word-break: break-word;
+      border-left: 3px solid #ffae00;
+    }
+    .qr {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .qr img {
+      width: 110px;
+      border: 1px solid #333;
+      padding: 5px;
+      background: #fff;
+    }
+    .note {
+      font-size: 0.85em;
+      color: #bbb;
+      margin-top: 8px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+    .contact {
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 20px;
+      background: #181818;
+      border-radius: 8px;
+      margin-top: 40px;
+      border: 1px solid #333;
+    }
+    .contact code {
+      background: #222;
+      padding: 4px 6px;
+      border-radius: 4px;
+      color: #ffcc00;
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>🧠 AnonPrompts</h1>
-    <p>Premium KI Prompts · 100% anonym · Bezahlung mit Bitcoin</p>
+    <h1>🧠 AnonPrompt Shop</h1>
+    <p>Premium KI Prompts – 100% Anonym – Nur Bitcoin</p>
   </header>
 
-  <main>
-    <section class="products">
-      <!-- Produkt 1 -->
-      <div class="product-card">
-        <h2>🔥 GPT-4 Prompt Pack (Business)</h2>
-        <p>100+ Premium Prompts für Marketing, SEO, Copywriting u.v.m.</p>
-        <div class="price">Preis: 25,000 sats</div>
-        <div class="btc-box">
-          BTC-Adresse:<br>
-          <code>bc1qexamplelongaddressxxxxxxxxxx</code>
-        </div>
-        <p class="note">Sende TX-ID + Produktname an: <code>anonprompts@protonmail.com</code></p>
+  <section class="products">
+    <!-- Produkt 1 -->
+    <div class="card">
+      <h2>🔥 GPT-4 Prompt Pack (Business)</h2>
+      <p>100+ handverlesene Prompts für Marketing, Verkauf, SEO & Content.</p>
+      <div class="price">25,000 sats</div>
+      <div class="btc-box">
+        Zahlung an BTC-Adresse:<br>
+        <code>bc1qexampleaddress1234567890xyz</code>
       </div>
-
-      <!-- Produkt 2 -->
-      <div class="product-card">
-        <h2>🎨 Midjourney Image Prompt Set</h2>
-        <p>50+ einzigartige Bild-Prompts für kreative AI-Bilder mit Stil.</p>
-        <div class="price">Preis: 15,000 sats</div>
-        <div class="btc-box">
-          Lightning Invoice:<br>
-          <code>lnbc1examplelightninginvoicexxxxxxxx</code>
-        </div>
-        <p class="note">Sende Screenshot an: <code>anonprompts@protonmail.com</code></p>
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=bitcoin:bc1qexampleaddress1234567890xyz&size=120x120" alt="QR Code">
       </div>
+      <div class="note">Sende TX-ID + Produktname an: <code>anonprompts@protonmail.com</code></div>
+    </div>
 
-      <!-- Produkt 3 -->
-      <div class="product-card">
-        <h2>💻 Dev & Debug Prompts</h2>
-        <p>Optimierte GPT-4 Prompts für Developer, Fehleranalyse & Refactoring.</p>
-        <div class="price">Preis: 10,000 sats</div>
-        <div class="btc-box">
-          BTC-Adresse:<br>
-          <code>bc1qexamplelongaddressxxxxxxxxxx</code>
-        </div>
-        <p class="note">Sende TX-ID an: <code>anonprompts@protonmail.com</code></p>
+    <!-- Produkt 2 -->
+    <div class="card">
+      <h2>🎨 Midjourney Art Prompts</h2>
+      <p>50+ kreative AI-Bild-Prompts für herausragende Kunstwerke mit Midjourney.</p>
+      <div class="price">15,000 sats</div>
+      <div class="btc-box">
+        Lightning Invoice:<br>
+        <code>lnbc1exampleinvoice0987654321</code>
       </div>
-    </section>
+      <div class="note">Sende Screenshot an: <code>anonprompts@protonmail.com</code></div>
+    </div>
 
-    <section class="contact">
-      <h3>📬 Kontakt & Lieferung</h3>
-      <p>Nach der Zahlung sende bitte TX-ID oder Screenshot + Produktname per:</p>
-      <ul>
-        <li>E-Mail: <code>anonprompts@protonmail.com</code></li>
-        <li>Nostr: <code>npub1xxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></li>
-      </ul>
-      <p>Lieferung erfolgt per E-Mail oder Nostr-Message innerhalb von 12h.</p>
-    </section>
-  </main>
+    <!-- Produkt 3 -->
+    <div class="card">
+      <h2>💻 Coding Prompts</h2>
+      <p>Effiziente Prompts für GPT-4 zur Hilfe bei Debugging, Code Review & mehr.</p>
+      <div class="price">10,000 sats</div>
+      <div class="btc-box">
+        BTC-Adresse:<br>
+        <code>bc1qexampleaddress0987654321abc</code>
+      </div>
+      <div class="note">Sende TX-ID an: <code>anonprompts@protonmail.com</code></div>
+    </div>
+  </section>
+
+  <div class="contact">
+    <h3>📬 Kontakt & Lieferung</h3>
+    <p>Nach Zahlung sende bitte:</p>
+    <ul>
+      <li>✅ Transaktions-ID oder Screenshot</li>
+      <li>✅ Produktname</li>
+    </ul>
+    <p>an <code>anonprompts@protonmail.com</code> oder über Nostr: <code>npub1examplenostrkeyxxxxxxxx</code></p>
+    <p>Die Lieferung erfolgt per Mail oder Nostr-Message innerhalb von 24 Stunden.</p>
+  </div>
 
   <footer>
-    <p>© 2025 AnonPrompts – Kein KYC. Kein Support. Keine Rückerstattung.</p>
+    <p>© 2025 AnonPrompt Shop – Kein KYC. Keine Rückerstattung. Kein Support. Bildung & Info only.</p>
   </footer>
+
 </body>
 </html>
